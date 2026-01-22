@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/SchoolTermTracker/.vs/SchoolTermTracker
+/SchoolTermTracker/bin/Debug
+/SchoolTermTracker/obj
+/SchoolTermTracker/.vs/ProjectEvaluation
