@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchoolTermTracker.Views.TermListPage"
+             Title="All Terms">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" />
+    </Shell.BackButtonBehavior>
+
+    <ScrollView>
+        <VerticalStackLayout
+            Margin="0"
+            Padding="30,0"
+            Spacing="0"
+            VerticalOptions="Start">
+
+            <SearchBar
+                Margin="-20,0,0,0"
+                TextChanged="SearchBarOnTextChanged"
+                Placeholder="Enter search" />
+            <ListView x:Name="searchResults">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Button
+                                Text="{Binding Name}"
+                                BackgroundColor="Transparent"
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="#000000"
+                                HorizontalOptions="Start"
+                                Clicked="ViewTermBtnClicked" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <FlexLayout
+                AlignItems="Center"
+                JustifyContent="SpaceBetween"
+                Margin="0,30">
+                <Label
+                    Text="Terms"
+                    FontAttributes="Bold"
+                    FontSize="28"
+                    SemanticProperties.HeadingLevel="Level1"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center" />
+                <Button
+                    Text="Add Term"
+                    MinimumWidthRequest="130"
+                    SemanticProperties.Description="Add a new term"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    Clicked="AddTermBtnClicked" />
+            </FlexLayout>
+
+            <StackLayout>
+                <CollectionView x:Name="collectionView"
+                        EmptyView="No terms to display">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="0,10,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Label
+                                    Text="{Binding Id}"
+                                    IsVisible="False" />
+                                <Label
+                                    Text="{Binding Name}"
+                                    FontSize="20"
+                                    FontAttributes="Bold"
+                                    MaximumWidthRequest="250"
+                                    Grid.Column="0"
+                                    Grid.Row="0" />
+                                <Label
+                                    Text="{Binding CombinedDates}"
+                                    FontSize="16"
+                                    Grid.Column="0"
+                                    Grid.Row="1" />
+
+                                <Button
+                                    Text="View"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#000000"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    Grid.Column="1"
+                                    Grid.RowSpan="2"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    Clicked="ViewTermBtnClicked" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

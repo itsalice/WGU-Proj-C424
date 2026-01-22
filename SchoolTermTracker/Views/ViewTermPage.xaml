@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchoolTermTracker.Views.ViewTermPage"
+             Title="View Term">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0">
+
+            <FlexLayout
+                AlignItems="Center"
+                JustifyContent="SpaceBetween"
+                Margin="0,30">
+                <Label 
+                    Text="{Binding Name}"
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    SemanticProperties.HeadingLevel="Level1"
+                    MaximumWidthRequest="200"/>
+                <Button
+                    Text="Edit Term"
+                    MinimumWidthRequest="130"
+                    SemanticProperties.Description="Edit the current term"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    Clicked="EditTermBtnClicked" />
+            </FlexLayout>
+        
+            <Label
+                Text="{Binding CombinedDates}"
+                FontSize="16"
+                Grid.Column="0"
+                Grid.Row="1" />
+
+            <FlexLayout
+                AlignItems="Center"
+                JustifyContent="SpaceBetween"
+                Margin="0,40,0,30">
+                <Label 
+                    Text="Courses"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    SemanticProperties.HeadingLevel="Level2" />
+                <Button
+                    Text="Add Course"
+                    MinimumWidthRequest="130"
+                    SemanticProperties.Description="Add a new course"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    Clicked="AddCourseBtnClicked" />
+            </FlexLayout>
+
+            <SearchBar
+                Margin="-20,0,0,0"
+                TextChanged="SearchBarOnTextChanged"
+                Placeholder="Enter search" />
+                    <ListView x:Name="searchResults">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Button
+                                Text="{Binding Name}"
+                                BackgroundColor="Transparent"
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="#000000"
+                                HorizontalOptions="Start"
+                                Clicked="ViewCourseBtnClicked" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout>
+                <CollectionView x:Name="collectionView"
+                        EmptyView="No courses to display">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="0,10,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Label
+                                    Text="{Binding Id}"
+                                    IsVisible="False" />
+                                <Label
+                                    Text="{Binding Name}"
+                                    FontSize="20"
+                                    FontAttributes="Bold"
+                                    MaximumWidthRequest="250"
+                                    Grid.Column="0"
+                                    Grid.Row="0" />
+                                <Label
+                                    Text="{Binding CombinedDates}"
+                                    FontSize="16"
+                                    Grid.Column="0"
+                                    Grid.Row="1" />
+                                <Label
+                                    Text="{Binding Status, StringFormat='Status: {0}'}"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    Grid.Column="0"
+                                    Grid.Row="2"
+                                    Margin="0,10,0,0"/>
+
+                                <Button
+                                    Text="View"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#000000"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    Grid.Column="1"
+                                    Grid.RowSpan="3"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    Clicked="ViewCourseBtnClicked" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+
+            <Grid>
+                <VerticalStackLayout
+                    Grid.Row="0"
+                    Padding="30"
+                    VerticalOptions="End">
+                    <Button
+                        Text="Generate Report"
+                        VerticalOptions="End"
+                        Clicked="GenerateReportBtnClicked" />
+                </VerticalStackLayout>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>

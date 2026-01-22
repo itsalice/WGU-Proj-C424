@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchoolTermTracker.Views.ViewCoursePage"
+             Title="View Course">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0">
+            
+            <Label
+                x:Name="courseName"
+                Text="{Binding CourseName}"
+                FontSize="28"
+                FontAttributes="Bold"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label
+                Text="{Binding CourseDates}"
+                FontSize="16" />
+
+            <Label
+                Text="{Binding CourseStatus, StringFormat='Status: {0}'}"
+                FontSize="16"
+                FontAttributes="Bold"
+                Margin="0,10,0,0 "/>
+
+            <!-- Instructor -->
+            <Label
+                Text="{Binding CourseName, StringFormat='{0} Instructor'}"
+                FontSize="20"
+                FontAttributes="Bold"
+                Margin="0,20,0,10" />
+            <Label
+                Text="{Binding InstructorName}"
+                FontSize="16"
+                FontAttributes="Bold" />
+            <Label
+                Text="{Binding InstructorEmail}"
+                FontSize="16"
+                FontAttributes="Bold" />
+            <Label
+                Text="{Binding InstructorPhone}"
+                FontSize="16"
+                FontAttributes="Bold" />
+
+            <!-- Note -->
+            <Label
+                Text="Notes"
+                FontSize="20"
+                FontAttributes="Bold"
+                Margin="0,20,0,10"/>
+            <Label
+                x:Name="CourseNote"
+                Text="{Binding CourseNote}"
+                FontSize="16" />
+            <ImageButton
+                x:Name="ShareBtn"
+                IsVisible="False"
+                Clicked="ShareCourseNote"
+                Source="share.png"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                WidthRequest="26"
+                HeightRequest="26"
+                Margin="0,20,0,0" />
+            
+            <!-- Assessment -->
+            <FlexLayout
+                AlignItems="Center"
+                JustifyContent="SpaceBetween"
+                Margin="0,45,0,30">
+                <Label 
+                    Text="Assessments"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    SemanticProperties.HeadingLevel="Level2" />
+                <Button
+                    Text="Add Assessment"
+                    x:Name="addAssessmentBtn"
+                    MinimumWidthRequest="130"
+                    SemanticProperties.Description="Add a new assessment"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    Clicked="AddAssessmentClicked" />
+            </FlexLayout>
+
+            <StackLayout>
+                <CollectionView
+                    x:Name="collectionView"
+                    EmptyView="No assessments to display">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                Padding="0,10,0,10"
+                                ColumnSpacing="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="26" />
+                                    <ColumnDefinition Width="26" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Label
+                                    Text="{Binding Id}"
+                                    IsVisible="False" />
+                                <Label
+                                    Text="{Binding Type}"
+                                    FontSize="18"
+                                    FontAttributes="Bold"
+                                    MaximumWidthRequest="250"
+                                    HorizontalOptions="Start"
+                                    Grid.Column="0"
+                                    Grid.Row="0" />
+                                <Label
+                                    Text="{Binding CombinedDates}"
+                                    FontSize="16"
+                                    Grid.Column="0"
+                                    Grid.Row="1" />
+
+                                <ImageButton
+                                    Clicked="EditAssessmentClicked"
+                                    Source="edit.png"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="End"
+                                    WidthRequest="26"
+                                    HeightRequest="26"
+                                    Grid.Column="1"
+                                    Grid.RowSpan="2" />
+                                <ImageButton
+                                    Clicked="DeleteAssessmentClicked"
+                                    Source="delete.png"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="End"
+                                    WidthRequest="26"
+                                    HeightRequest="26"
+                                    Grid.Column="2"
+                                    Grid.RowSpan="2" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+
+            <FlexLayout
+                JustifyContent="SpaceBetween"
+                Margin="0,30">
+                <Button
+                    x:Name="editCourse"
+                    Text="Edit"
+                    MinimumWidthRequest="150"
+                    Clicked="EditCourseClicked"
+                    HorizontalOptions="Start" />
+                <Button
+                    x:Name="deleteCourse"
+                    Text="Delete"
+                    MinimumWidthRequest="150"
+                    Clicked="DeleteCourseClicked"
+                    HorizontalOptions="End" />
+            </FlexLayout>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

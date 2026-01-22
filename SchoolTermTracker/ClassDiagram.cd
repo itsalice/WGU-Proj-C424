@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SchoolTermTracker.Models.Term">
+    <Position X="1.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJCBAAAACAQAAAAAAASAAUAAAAAAAAAAEACAAAAAAA=</HashCode>
+      <FileName>Models\Term.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolTermTracker.Models.Course">
+    <Position X="4" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAICBAAECCAQAAAYAIAAFAQCQCADAEAEAEAigAEBAAE=</HashCode>
+      <FileName>Models\Course.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolTermTracker.Models.Assessment">
+    <Position X="6.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIGAAAAACAAAAAAAAAAEAAAAAAAAAAAAUAAgAAAAAA=</HashCode>
+      <FileName>Models\Assessment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolTermTracker.Models.Instructor">
+    <Position X="6.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAACAAAAAAAAAAAAQAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Instructor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolTermTracker.Models.User">
+    <Position X="1.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAQAAAAAAAAAAAAgAgAAAECAQACAAAABAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

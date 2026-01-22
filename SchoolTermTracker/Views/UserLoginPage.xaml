@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchoolTermTracker.Views.UserLoginPage"
+             Title="Log In">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" />
+    </Shell.BackButtonBehavior>
+
+    <ScrollView>
+        <VerticalStackLayout
+            Margin="0"
+            Padding="30"
+            Spacing="0"
+            VerticalOptions="Start">
+
+            <Label Text="User Name" />
+            <Entry 
+                x:Name="userName"
+                Placeholder="Enter username"
+                Margin="0,0,0,30" />
+            <Label 
+                x:Name="userNameErrorLabel"
+                TextColor="Red"
+                IsVisible="False" />
+
+            <Label Text="Password" />
+            <Entry 
+                x:Name="password"
+                Placeholder="Enter password"
+                IsPassword="True"
+                Margin="0,0,0,30" />
+            <Label 
+                x:Name="passwordErrorLabel"
+                TextColor="Red"
+                IsVisible="False" />
+
+            <Label 
+                x:Name="loginErrorLabel"
+                TextColor="Red"
+                IsVisible="False"
+                Margin="0,0,0,10" />
+            <Button
+                Text="Login"
+                Clicked="userLoginBtnClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

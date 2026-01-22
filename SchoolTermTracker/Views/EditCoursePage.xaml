@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchoolTermTracker.Views.EditCoursePage"
+             Title="Edit Course">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0">
+            
+            <Label 
+                Text="Edit Course"
+                FontSize="28"
+                FontAttributes="Bold"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Entry 
+                x:Name="courseName"
+                TextChanged="CourseNameTextChanged"
+                Text="{Binding CourseName}"
+                Placeholder="Enter course name" />
+            <Label x:Name="courseNameErrorLabel" TextColor="Red" IsVisible="False" />
+
+            <Grid
+                Margin="0,30,0,0"
+                ColumnSpacing="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label 
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="Start Date"
+                    FontAttributes="Bold" />
+                <Grid
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Column="0"
+                    Grid.Row="1">
+                    <DatePicker
+                        DateSelected="StartDateSelected"
+                        x:Name="startDate"
+                        Date="{Binding StartDate}"
+                        Format="{}MM/dd/yyyy"
+                        IsVisible="True"
+                        HorizontalOptions="FillAndExpand"
+                        Margin="0,0,25,0" />
+                    <Image
+                        Source="calendar.png"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        WidthRequest="20"
+                        HeightRequest="20" />
+                </Grid>
+                <Label
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Text="End Date"
+                    FontAttributes="Bold" />
+                <Grid
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Column="1"
+                    Grid.Row="1">
+                    <DatePicker
+                        DateSelected="EndDateSelected"
+                        x:Name="endDate"
+                        Date="{Binding EndDate}"
+                        Format="{}MM/dd/yyyy"
+                        IsVisible="True"
+                        HorizontalOptions="FillAndExpand"
+                        Margin="0,0,25,0" />
+                    <Image
+                        Source="calendar.png"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        WidthRequest="20"
+                        HeightRequest="20" />
+                </Grid>
+            </Grid>
+
+            <Label
+                x:Name="dateErrorLabel"
+                TextColor="Red"
+                IsVisible="False" />
+
+            <Label
+                Text="Notifications"
+                FontAttributes="Bold"
+                Margin="0,20,0,0"/>
+            <Grid
+                Margin="0,0,0,20" 
+                RowDefinitions="Auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <CheckBox 
+                    x:Name="startCheckBox"
+                    IsChecked="{Binding StartCheckBox}"
+                    Grid.Column="0"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Label 
+                    Text="Start Date"
+                    FontAttributes="Bold"
+                    Grid.Column="0"
+                    Margin="50,0"
+                    VerticalOptions="Center" />
+                <CheckBox 
+                    x:Name="endCheckBox"
+                    IsChecked="{Binding EndCheckBox}"
+                    Grid.Column="1"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Label 
+                    Text="End Date"
+                    FontAttributes="Bold"
+                    Grid.Column="1"
+                    Margin="50,0"
+                    VerticalOptions="Center" />
+            </Grid>
+
+            <Label
+                Text="Course Status"
+                FontAttributes="Bold" />
+            <Grid
+                VerticalOptions="Center"
+                HorizontalOptions="FillAndExpand">
+                <Picker
+                    SelectedIndexChanged="CourseStatusSelectedIndexChanged"
+                    x:Name="courseStatus"
+                    SelectedItem="{Binding CourseStatus}"
+                    Title="Select a course status"
+                    HorizontalOptions="FillAndExpand">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>In Progress</x:String>
+                            <x:String>Completed</x:String>
+                            <x:String>Dropped</x:String>
+                            <x:String>Plan To Take</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Image
+                    Source="arrowdown.png"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    WidthRequest="20"
+                    HeightRequest="20" />
+            </Grid>
+            <Label
+                x:Name="statusErrorLabel"
+                TextColor="Red"
+                IsVisible="False" />
+
+            <!-- Instructor -->
+            <Label
+                x:Name="instructorId"
+                Text="{Binding InstructorId}"
+                IsVisible="False" />
+            <Label
+                Text="Course Instructor"
+                FontAttributes="Bold"
+                Margin="0,20,0,0" />
+            <Entry 
+                TextChanged="InstructorNameTextChanged"
+                x:Name="instructorName"
+                Text="{Binding InstructorName}"
+                Placeholder="Enter instructor name" />
+            <Label x:Name="instructorNameErrorLabel" TextColor="Red" IsVisible="False" />
+
+            <Label
+                Text="Course Instructor Phone"
+                FontAttributes="Bold"
+                Margin="0,20,0,0" />
+            <Entry 
+                TextChanged="InstructorPhoneTextChanged"
+                x:Name="instructorPhone"
+                Text="{Binding InstructorPhone}"
+                Placeholder="Enter instructor phone"
+                Keyboard="Numeric" />
+            <Label x:Name="instructorPhoneErrorLabel" TextColor="Red" IsVisible="False" />
+
+            <Label
+                Text="Course Instructor Email"
+                FontAttributes="Bold"
+                Margin="0,20,0,0" />
+            <Entry 
+                TextChanged="InstructorEmailTextChanged"
+                x:Name="instructorEmail"
+                Text="{Binding InstructorEmail}"
+                Placeholder="Enter instructor email" />
+            <Label x:Name="instructorEmailErrorLabel" TextColor="Red" IsVisible="False" />
+
+            <!-- Course: Note -->
+            <Label
+                Text="Notes"
+                FontAttributes="Bold"
+                Margin="0,20,0,0" />
+            <Entry 
+                x:Name="courseNote"
+                Text="{Binding CourseNote}"
+                Placeholder="Enter optional note here"
+                HeightRequest="80"
+                VerticalTextAlignment="Start"/>
+
+            <Button
+                x:Name="updateCourse"
+                Text="Submit"
+                MinimumWidthRequest="150"
+                Margin="0,30,0,20"
+                Clicked="UpdateCourseClicked"
+                HorizontalOptions="Center" />
+            
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>

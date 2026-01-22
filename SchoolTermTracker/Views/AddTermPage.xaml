@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchoolTermTracker.Views.AddTermPage"
+             Title="Add Term">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0">
+            
+            <Label 
+                Text="Add Term"
+                FontSize="28"
+                FontAttributes="Bold"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Entry
+                TextChanged="TermNameTextChanged"
+                x:Name="termName"
+                Placeholder="Enter term name" />
+            <Label x:Name="termNameErrorLabel" TextColor="Red" IsVisible="False" />
+
+            <Grid
+                Margin="0,30,0,0"
+                ColumnSpacing="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label 
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="Start Date"
+                    FontAttributes="Bold" />
+                <Grid
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Column="0"
+                    Grid.Row="1">
+                    <DatePicker
+                        DateSelected="StartDateSelected"
+                        x:Name="startDate"
+                        Format="{}MM/dd/yyyy"
+                        IsVisible="True"
+                        HorizontalOptions="FillAndExpand"
+                        Margin="0,0,25,0" />
+                    <Image
+                        Source="calendar.png"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        WidthRequest="20"
+                        HeightRequest="20" />
+                </Grid>
+                <Label
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Text="End Date"
+                    FontAttributes="Bold" />
+                <Grid
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Column="1"
+                    Grid.Row="1">
+                    <DatePicker
+                        DateSelected="EndDateSelected"
+                        x:Name="endDate"
+                        Format="{}MM/dd/yyyy"
+                        IsVisible="True"
+                        HorizontalOptions="FillAndExpand"
+                        Margin="0,0,25,0" />
+                    <Image
+                        Source="calendar.png"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        WidthRequest="20"
+                        HeightRequest="20" />
+                </Grid>
+            </Grid>
+
+            <Label
+                x:Name="dateErrorLabel"
+                TextColor="Red"
+                IsVisible="False" />
+
+            <Button
+                x:Name="addTerm"
+                Text="Submit"
+                Margin="0,30"
+                MaximumWidthRequest="150"
+                Clicked="AddTermSubmitClicked" />
+            
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>
